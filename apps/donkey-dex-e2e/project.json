@@ -1,0 +1,28 @@
+{
+  "root": "apps/donkey-dex-e2e",
+  "sourceRoot": "apps/donkey-dex-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/donkey-dex-e2e/cypress.json",
+        "devServerTarget": "donkey-dex:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "donkey-dex:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/donkey-dex-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["donkey-dex"]
+}

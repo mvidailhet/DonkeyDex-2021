@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "donkey-dex": "apps/donkey-dex",
+    "donkey-dex-e2e": "apps/donkey-dex-e2e"
+  }
+}
