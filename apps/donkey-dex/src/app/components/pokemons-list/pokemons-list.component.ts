@@ -9,9 +9,15 @@ import { ApiService } from '../../services/api.service';
 export class PokemonsListComponent {
   pokemons: any[] = [];
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) {
+    this.fetchAllPokemons();
+  }
 
   async fetchAllPokemons() {
-    this.pokemons = await this.apiService.fetchPokemonList();
+    //this.pokemons = await this.apiService.fetchPokemonList();
+
+    this.apiService.getPokemonList().subscribe((pokemons) => {
+      this.pokemons = pokemons;
+    });
   }
 }
