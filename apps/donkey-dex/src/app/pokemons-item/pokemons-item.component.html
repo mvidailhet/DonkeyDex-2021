@@ -13,7 +13,9 @@
       </div>
     </div>
     <div class="col-4 image-col">
+      <donkey-dex-list-loader [isLoading]="!pokemon?.details"></donkey-dex-list-loader>
       <img
+        *ngIf="pokemon?.details"
         [src]="pokemon?.details?.sprites.front_default"
         class="img-fluid rounded-start"
       />
