@@ -18,8 +18,8 @@ export class PokemonsListComponent {
       this.pokemons = pokemons;
 
       for (let i = 0; i < this.pokemons.length; i++) {
-        this.apiService.getPokemonData(this.pokemons[i]).subscribe((data) => {
-          this.pokemons[i] = { ...this.pokemons[i], data };
+        this.apiService.getPokemonData(this.pokemons[i]).subscribe((details) => {
+          this.pokemons[i] = { ...this.pokemons[i], details };
         });
       }
     });

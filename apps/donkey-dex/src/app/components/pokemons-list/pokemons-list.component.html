@@ -1,6 +1,1 @@
-<div *ngFor="let pokemon of pokemons">
-  {{ pokemon.name }}
-    <div *ngFor="let type of pokemon.data?.types">
-      {{ type.type.name }}
-    </div>
-</div>
+<donkey-dex-pokemons-item *ngFor="let pokemon of pokemons" [pokemon]="pokemon"></donkey-dex-pokemons-item>
