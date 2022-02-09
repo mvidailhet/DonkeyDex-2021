@@ -3,6 +3,13 @@ import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { Pokemon } from '../models/pokemon';
 
+export enum PokemonTypeEnum {
+  FIRE = "fire",
+  GRASS = "grass",
+  WATER = "water",
+  POISON = "poison",
+}
+
 @Injectable({
   providedIn: 'root',
 })

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { delay } from 'rxjs';
 import { Pokemon } from '../../models/pokemon';
-import { ApiService } from '../../services/api.service';
+import { ApiService, PokemonTypeEnum } from '../../services/api.service';
 
 @Component({
   selector: 'donkey-dex-pokemons-list',
@@ -9,6 +9,8 @@ import { ApiService } from '../../services/api.service';
   styleUrls: ['./pokemons-list.component.scss'],
 })
 export class PokemonsListComponent {
+  PokemonTypeEnum = PokemonTypeEnum;
+  pokemonTypeToFilter: PokemonTypeEnum | undefined;
   pokemons: Pokemon[] = [];
   isLoading = true;
 

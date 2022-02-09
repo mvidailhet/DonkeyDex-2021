@@ -1,2 +1,12 @@
+<div class="p-3">
+  <div class="mb-3">
+    <label for="pokemonTypeFilterSelect" class="form-label">filtrer par type :</label>
+    <select class="form-control" id="pokemonTypeFilterSelect" [(ngModel)]="pokemonTypeToFilter">
+      <option selected value="">Select a type</option>
+      <option *ngFor="let type of PokemonTypeEnum | keyvalue" [value]="type.key">{{ type.value }}</option>
+    </select>
+  </div>
+</div>
+
 <donkey-dex-list-loader [isLoading]="isLoading"></donkey-dex-list-loader>
-<donkey-dex-pokemons-item *ngFor="let pokemon of pokemons" [pokemon]="pokemon"></donkey-dex-pokemons-item>
+<donkey-dex-pokemons-item *ngFor="let pokemon of pokemons | pokemonTypeFilter:pokemonTypeToFilter" [pokemon]="pokemon"></donkey-dex-pokemons-item>

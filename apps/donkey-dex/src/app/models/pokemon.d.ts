@@ -26,10 +26,3 @@ export interface PokemonSprites {
   front_default: string | null;
   front_female: string | null;
 }
-
-export enum PokemonTypeEnum {
-  FIRE = "fire",
-  GRASS = "grass",
-  WATER = "water",
-  POISON = "poison",
-}
