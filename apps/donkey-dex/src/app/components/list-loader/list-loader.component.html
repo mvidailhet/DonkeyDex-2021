@@ -1,0 +1,8 @@
+<div class="screen-centerer" *ngIf="isLoading || isEmpty">
+  <div
+    class="spinner-border main-loader text-primary"
+    role="status"
+    *ngIf="isLoading"
+  ></div>
+  <span *ngIf="!isLoading && isEmpty">{{ emptyMessage }}</span>
+</div>

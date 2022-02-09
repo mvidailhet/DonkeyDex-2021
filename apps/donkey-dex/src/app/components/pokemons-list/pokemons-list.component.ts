@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { delay } from 'rxjs';
 import { ApiService } from '../../services/api.service';
 
 @Component({
@@ -8,21 +9,29 @@ import { ApiService } from '../../services/api.service';
 })
 export class PokemonsListComponent {
   pokemons: any[] = [];
+  isLoading = true;
 
   constructor(private apiService: ApiService) {
     this.fetchAllPokemons();
   }
 
   async fetchAllPokemons() {
-    this.apiService.getPokemonList().subscribe((pokemons) => {
-      this.pokemons = pokemons;
+    this.apiService
+      .getPokemonList()
+      .pipe(delay(3000))
+      .subscribe((pokemons) => {
+        this.isLoading = false;
+        this.pokemons = pokemons;
 
-      for (let i = 0; i < this.pokemons.length; i++) {
-        this.apiService.getPokemonData(this.pokemons[i]).subscribe((details) => {
-          this.pokemons[i] = { ...this.pokemons[i], details };
-          console.log(details);
-        });
-      }
-    });
+        for (let i = 0; i < this.pokemons.length; i++) {
+          this.apiService
+            .getPokemonData(this.pokemons[i])
+            .pipe(delay(3000))
+            .subscribe((details) => {
+              this.pokemons[i] = { ...this.pokemons[i], details };
+              console.log(details);
+            });
+        }
+      });
   }
 }
