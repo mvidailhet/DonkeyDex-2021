@@ -28,9 +28,9 @@ export class PokemonsListComponent {
           this.apiService
             .getPokemonData(this.pokemons[i])
             .pipe(delay(1000))
-            .subscribe((details) => {
+            .subscribe((details: any) => {
               this.pokemons[i] = { ...this.pokemons[i], details };
-              console.log(details);
+              //console.log(details);
             });
         }
       });
