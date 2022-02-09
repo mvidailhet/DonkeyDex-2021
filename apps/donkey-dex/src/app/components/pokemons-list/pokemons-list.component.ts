@@ -20,6 +20,7 @@ export class PokemonsListComponent {
       for (let i = 0; i < this.pokemons.length; i++) {
         this.apiService.getPokemonData(this.pokemons[i]).subscribe((details) => {
           this.pokemons[i] = { ...this.pokemons[i], details };
+          console.log(details);
         });
       }
     });

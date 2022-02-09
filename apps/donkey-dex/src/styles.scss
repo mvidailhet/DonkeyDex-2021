@@ -2,3 +2,20 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+$pokemon-type-colors: (
+  grass: green,
+  fire: orange,
+  water: blue,
+  poison: purple,
+);
+
+.pokemon-background-type {
+  background-color: grey;
+}
+
+@each $name, $hex in $pokemon-type-colors {
+  .pokemon-background-type-#{$name} {
+    background-color: $hex;
+  }
+}
