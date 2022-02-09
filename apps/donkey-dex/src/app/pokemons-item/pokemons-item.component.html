@@ -1,0 +1,8 @@
+<div>
+  {{ pokemon.name }}
+  <div *ngIf="details?.types">
+    <div *ngFor="let type of details?.types">
+      {{ type.type.name }}
+    </div>
+  </div>
+</div>

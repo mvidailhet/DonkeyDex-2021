@@ -11,7 +11,7 @@ export class ApiService {
   constructor(private httpClient: HttpClient) {}
 
   fetchPokemonList(): Promise<any> {
-    return fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
+    return fetch('https://pokeapi.co/api/v2/pokemon?limit=10')
       .then((response) => response.json())
       .then(
         (result) => {
@@ -23,9 +23,27 @@ export class ApiService {
       );
   }
 
+  fetchPokemonData(pokemon: any) {
+    return fetch(pokemon.url)
+      .then((response) => response.json())
+      .then((pokeData) => {
+        return pokeData;
+      });
+  }
+
+  getPokemonData(pokemon: any) {
+    return this.httpClient.get(pokemon.url)
+    .pipe(
+      catchError((error) => {
+        console.error(error);
+        return of({});
+      })
+    );
+  }
+
   getPokemonList(): Observable<any> {
     return this.httpClient
-      .get('https://pokeapi.co/api/v2/pokemon?limit=151')
+      .get('https://pokeapi.co/api/v2/pokemon?limit=10')
       .pipe(
         catchError((error) => {
           console.error(error);

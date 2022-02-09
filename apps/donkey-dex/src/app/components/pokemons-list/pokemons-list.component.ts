@@ -14,10 +14,11 @@ export class PokemonsListComponent {
   }
 
   async fetchAllPokemons() {
-    //this.pokemons = await this.apiService.fetchPokemonList();
+    this.pokemons = await this.apiService.fetchPokemonList();
 
-    this.apiService.getPokemonList().subscribe((pokemons) => {
-      this.pokemons = pokemons;
+    this.pokemons.forEach(async (pokemon, index) => {
+      this.pokemons[index].data = await this.apiService.fetchPokemonData(pokemon);
+      console.log(this.pokemons[index]);
     });
   }
 }
