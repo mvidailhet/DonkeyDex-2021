@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of, tap } from 'rxjs';
+import { Pokemon } from '../models/pokemon';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class ApiService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getPokemonData(pokemon: any) {
+  getPokemonData(pokemon: Pokemon) {
     return this.httpClient.get(pokemon.url)
     .pipe(
       catchError((error) => {
@@ -20,7 +21,7 @@ export class ApiService {
     );
   }
 
-  getPokemonList(): Observable<any> {
+  getPokemonList(): Observable<Pokemon[]> {
     return this.httpClient
       .get('https://pokeapi.co/api/v2/pokemon?limit=10')
       .pipe(
